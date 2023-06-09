@@ -22,7 +22,7 @@ Plugins para navegadores não é minha área de estudo. Logo, terei que aprender
 
 Basta clicar no Sol/Lua no topo da tela, para alternar.
 
-![Screenshot_1.png](Screenshot_1.png)
+![Screenshot_1.png](/screenshot_1.png)
 
 <br> 
 <br>
@@ -33,7 +33,7 @@ A lista de bloqueio é salva no seu navegador. Então, limpeza de cache (e outra
 
 Ainda não decidi se vou oferecer uma forma de salvar permanente.
 
-![Screenshot_2.png](Screenshot_2.png)
+![Screenshot_2.png](/screenshot_2.png)
 
 <br> 
 <br>
@@ -42,4 +42,4 @@ Ainda não decidi se vou oferecer uma forma de salvar permanente.
 
 Visualize usuários bloqueados e desfaça bloqueios.
 
-![Screenshot_3.png](Screenshot_3.png)
+![Screenshot_3.png](/screenshot_3.png)
