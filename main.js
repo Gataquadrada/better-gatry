@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name        MuteThem
-// @description This is your new file, start writing code
+// @name        Better Gatry
+// @description Make Gatry great.
 // @match       *://gatry.com/*
 // ==/UserScript==
+
 const bttgDarkModeStyles = `<style id="bttg-dark-mode">
 	:root{
 		--bttg-color-bg: #222831;
@@ -321,6 +322,65 @@ window.addEventListener("load", () => {
 				},
 			}
 		)
+	})
+
+	$(".load-more button").off("click")
+
+	var loading = false
+	var userClickLoadMore = false
+	$(document).on("click", ".load-more button", function (e) {
+		e.stopImmediatePropagation()
+		e.preventDefault()
+
+		userClickLoadMore = true
+
+		if (loading) return
+
+		loading = true
+
+		var $this = $(this)
+		var url = $(this).data("url")
+		var appendLocal = $(this).data("appendLocal")
+		var finishText =
+			$(this).data("finishText") || "Todos os registros foram exibidos"
+		var exclude = $(this).data("exclude") || null
+		var page = parseInt($(this).data("currentPage"))
+		var nextPage = page + 1
+		var scrollTop = document.documentElement.scrollTop
+
+		$this.html("Carregando, aguarde...")
+
+		$.get(url, { page: nextPage, exclude: exclude }, function (e) {
+			if (e.length == 0) {
+				$this.prop("disabled", true)
+				userClickLoadMore = false
+				$this.html(finishText)
+				return
+			}
+
+			$(appendLocal).append(e)
+
+			$this.data("currentPage", nextPage)
+
+			window.scrollTo(0, scrollTop)
+			loading = false
+
+			$this.html("Carregar mais...")
+
+			bttgCleanThem()
+		})
+	})
+
+	$(window).on("scroll", function (e) {
+		if (!userClickLoadMore && !$.browser.mobile) return
+		if ($(".load-more button").length == 0) return
+
+		if (
+			$(window).scrollTop() >=
+			$(document).height() - $(window).height() - 10
+		) {
+			$(".load-more button").click()
+		}
 	})
 
 	$(document).on("click", `[data-bttg-user-block]`, function (e) {
