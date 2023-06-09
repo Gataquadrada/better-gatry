@@ -93,6 +93,13 @@ const bttgDarkModeStyles = `<style id="bttg-dark-mode">
 	.bttg-dark-mode footer{
 		background: var(--bttg-color-bg);
 	}
+	.bttg-dark-mode .tribute-container ul{
+		background: var(--bttg-color-bg);
+		border-color: var(--bttg-color-bg);
+	}
+	.bttg-dark-mode .tribute-container ul .highlight{
+		background: var(--bttg-color-bc);
+	}
 	</style>`
 
 document.head.innerHTML += bttgDarkModeStyles
