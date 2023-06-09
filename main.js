@@ -4,12 +4,16 @@
 // @match       *://gatry.com/*
 // ==/UserScript==
 
+const BTTG_VERSION = "0.0.2"
+
 const bttgDarkModeStyles = `<style id="bttg-dark-mode">
 	:root{
 		--bttg-color-bg: #222831;
 		--bttg-color-fg: #393E46;
 		--bttg-color-bc: #343a40;
 		--bttg-color-fc: #cccccc;
+	}
+	:root.bttg-dark-mode body{
 		--fancybox-content-bg: var(--bttg-color-fg);
 		--fancybox-content-color: var(--bttg-color-fc);
 	}
@@ -243,7 +247,7 @@ window.addEventListener("load", () => {
 		e.preventDefault()
 
 		Swal.fire({
-			title: "Better Gatry 0.0.1",
+			title: `Better Gatry ${BTTG_VERSION}`,
 			text: "Teste",
 			html: `
 			<ul style="font-size:16px;text-align:left;list-style:disc;padding-left:15px;">
