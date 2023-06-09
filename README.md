@@ -1,4 +1,22 @@
 Ajustes na experiência Gatry.
+<br>
+<br>
+
+## Usuários de scripts personalizados podem utilizar o seguinte endereço:
+
+`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
+
+Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij).
+<br>
+<br>
+
+# Plugin para Chrome/Opera/Firefox?
+
+Quando houver tempo livre (e vontade) para tal...  
+Plugins para navegadores não é minha área de estudo. Logo, terei que aprender do zero...
+
+<br>
+<br>
 
 # Dark mode
 
