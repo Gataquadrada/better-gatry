@@ -11,8 +11,6 @@ Utilize um dos endereços abaixo em plugins de personalização. Como:
 -   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
 -   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
 
-<br>
-
 ### Versão estável:
 
 `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
@@ -72,17 +70,17 @@ Faça backup das suas configurações e transfira entre computadores.
 
 # A fazer
 
--   [x] Filtrar descontos duplicados, ao rolar a página.
--   [x] Filtrar posts duplicados, ao rolar a página.
--   [x] Salvar preferências de forma (mais) permanente.
--   [ ] Adicionar destaque para termos importantes.
--   [x] Adicionar selo de verificação.
--   [ ] Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
--   [ ] Carregar imagens em comentários.
--   [ ] Seletor de GIFs em comentários.
--   [ ] Upload de imagens para IMGUR em comentários.
--   [ ] Gif avatars.
--   [x] Jantar.
+-   ✅ Filtrar descontos duplicados, ao rolar a página.
+-   ✅ Filtrar posts duplicados, ao rolar a página.
+-   ✅ Salvar preferências de forma (mais) permanente.
+-   ⬜ Adicionar destaque para termos importantes.
+-   ✅ Adicionar selo de verificação.
+-   ⬜ Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
+-   ⬜ Carregar imagens em comentários.
+-   ⬜ Seletor de GIFs em comentários.
+-   ⬜ Upload de imagens para IMGUR em comentários.
+-   ⬜ Gif avatars.
+-   ✅ Achar a minha LTT Screwdriver.
 
 <br>
 
