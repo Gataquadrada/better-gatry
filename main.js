@@ -822,9 +822,13 @@
 							$(appendLocal).append(article)
 						}
 					} else if ($(this).find(".comment-content").length) {
-						const comment = $(this).find(".comment-content").text()
+						const comment = $(this)
+							.find(".comment-content")
+							.text()
+							.trim()
+							.split("\n")
 
-						if (!$(`.comment:contains("${comment}")`).length) {
+						if (!$(`.comment:contains("${comment[0]}")`).length) {
 							$(appendLocal).append(article)
 						}
 					}
