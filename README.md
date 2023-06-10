@@ -43,3 +43,16 @@ Ainda não decidi se vou oferecer uma forma de salvar permanente.
 Visualize usuários bloqueados e desfaça bloqueios.
 
 ![Screenshot_3.png](/screenshot_3.png)
+
+<br>
+<br>
+
+# A fazer
+
+-   [ ] Filtrar descontos duplicados, ao rolar a página.
+-   [ ] Filtrar posts duplicados, ao rolar a página.
+-   [ ] Salvar preferências de forma (mais) permanente.
+-   [ ] Adicionar destaque para termos importantes.
+-   [ ] Adicionar selo de verificação com base em "likes".
+-   [ ] Perguntar ao Mr G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
+-   [x] Jantar.
