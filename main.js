@@ -36,9 +36,10 @@
 			"https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/verified-users.json"
 		).then((response) => {
 			response.json().then((jsonData) => {
-				console.log(jsonData)
-				jsonData.users.forEach((user) => {
-					console.log(user)
+				jsonData.users.forEach((u) => {
+					if ("gatry" !== u.user) {
+						BTTG_VERIFIED[u.user] = u.badge
+					}
 				})
 			})
 		})
@@ -814,7 +815,6 @@
 				// Hack to fix duplicated posts.
 				$(e).each(function () {
 					const article = $(this)
-					console.log(article)
 
 					if ($(this).find(".description h3").length) {
 						const title = $(this).find(".description h3").text()

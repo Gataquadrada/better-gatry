@@ -62,11 +62,11 @@ Faça backup das suas configurações e transfira entre computadores.
 
 # A fazer
 
--   [ ] Filtrar descontos duplicados, ao rolar a página.
--   [ ] Filtrar posts duplicados, ao rolar a página.
+-   [x] Filtrar descontos duplicados, ao rolar a página.
+-   [x] Filtrar posts duplicados, ao rolar a página.
 -   [x] Salvar preferências de forma (mais) permanente.
 -   [ ] Adicionar destaque para termos importantes.
--   [ ] Adicionar selo de verificação com base em "likes".
+-   [x] Adicionar selo de verificação.
 -   [ ] Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
 -   [ ] Carregar imagens em comentários.
 -   [ ] Seletor de GIFs em comentários.
