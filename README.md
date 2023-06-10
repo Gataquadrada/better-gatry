@@ -1,19 +1,23 @@
-Ajustes na experiência Gatry.
-<br>
+# Ajustes na experiência Gatry.
+
+![Screenshot_5.png](/screenshot_5.png)
+
 <br>
 
 ## Usuários de scripts personalizados podem utilizar o seguinte endereço:
 
 `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
 
-Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij).
-<br>
+-   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
+-   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
+
 <br>
 
-# Plugin para Chrome/Opera/Firefox?
+## Plugin para Chrome/Opera/Firefox?
 
-Quando houver tempo livre (e vontade) para tal...  
-Plugins para navegadores não é minha área de estudo. Logo, terei que aprender do zero...
+_Quando houver tempo livre (e vontade) para tal..._
+
+-   O usuário [L Lawliet](https://gatry.com/usuarios/detalhe/TheTwoD) postou [uma base](chrome-plugin-base), caso você queira tomar a iniciativa.
 
 <br>
 <br>
@@ -47,15 +51,43 @@ Visualize usuários bloqueados e desfaça bloqueios.
 <br>
 <br>
 
+# Backup
+
+Faça backup das suas configurações e transfira entre computadores.
+
+![Screenshot_4.png](/screenshot_4.png)
+
+<br>
+<br>
+
 # A fazer
 
 -   [ ] Filtrar descontos duplicados, ao rolar a página.
 -   [ ] Filtrar posts duplicados, ao rolar a página.
--   [ ] Salvar preferências de forma (mais) permanente.
+-   [x] Salvar preferências de forma (mais) permanente.
 -   [ ] Adicionar destaque para termos importantes.
 -   [ ] Adicionar selo de verificação com base em "likes".
--   [ ] Perguntar ao Mr G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
+-   [ ] Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
 -   [ ] Carregar imagens em comentários.
 -   [ ] Seletor de GIFs em comentários.
 -   [ ] Upload de imagens para IMGUR em comentários.
+-   [ ] Gif avatars.
 -   [x] Jantar.
+
+<br>
+
+# Changelog
+
+0.0.3
+
+-   Code cleaning (more like refactoring galore).
+-   Verified badges.
+-   Bugfixes.
+
+0.0.2
+
+-   ???
+
+0.0.1
+
+-   Introduction.
