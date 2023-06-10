@@ -6,18 +6,24 @@
 
 # Instalação
 
-Utilize um dos endereços abaixo em plugins de personalização. Como:
+Utilize um dos arquivos abaixo em plugins de personalização. Como:
 
 -   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
 -   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
 
-### Versão estável:
+### Versão estável
 
 `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
 
-### Quer a versão mais nova possível?
+### Versão mais nova possível (depende de cache)
 
 `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/main.min.js`
+
+<br>
+
+```ini
+[Eu pretendo criar um CDN, futuramente.]
+```
 
 <br>
 
@@ -76,7 +82,8 @@ Faça backup das suas configurações e transfira entre computadores.
 -   ⬜ Adicionar destaque para termos importantes.
 -   ✅ Adicionar selo de verificação.
 -   ⬜ Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
--   ⬜ Carregar imagens em comentários.
+-   ✅ Carregar imagens em comentários.
+-   ✅ Pré-visualizar links em comentários.
 -   ⬜ Seletor de GIFs em comentários.
 -   ⬜ Upload de imagens para IMGUR em comentários.
 -   ⬜ Gif avatars.
@@ -85,6 +92,10 @@ Faça backup das suas configurações e transfira entre computadores.
 <br>
 
 # Changelog
+
+0.0.4
+
+-   Link preview.
 
 0.0.3
 

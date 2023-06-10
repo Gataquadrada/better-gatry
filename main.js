@@ -5,8 +5,11 @@
 // ==/UserScript==
 
 {
+	// Don't touch this.
+	var BTTG_CAN_FETCH = false
+
 	// Version, duh.
-	const BTTG_VERSION = "0.0.3"
+	const BTTG_VERSION = "0.0.4"
 
 	// A bit of art for you nerds.
 	// Open with CTRL+SHIT+I (or CMD+Option+I).
@@ -35,6 +38,7 @@
 		fetch(
 			"https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/verified-users.json"
 		).then((response) => {
+			BTTG_CAN_FETCH = true
 			response.json().then((jsonData) => {
 				jsonData.users.forEach((u) => {
 					if ("gatry" !== u.user) {
@@ -51,6 +55,7 @@
 	const bttgMySettings = {
 		helped: false,
 		darkmode: true,
+		rich_links: false,
 		users: [],
 	}
 
@@ -182,6 +187,7 @@
 		// Sue me.
 		bttgMySettings.helped = mySettings.helped
 		bttgMySettings.darkmode = mySettings.darkmode
+		bttgMySettings.rich_links = mySettings.rich_links
 		bttgMySettings.users = mySettings.users
 	} catch (err) {
 		console.error(err)
@@ -198,23 +204,27 @@
 		{
 			helped = null,
 			darkmode = null,
+			rich_links = null,
 			users = null,
 			_callback = () => {},
-			autosave = false,
+			_autosave = false,
 		} = {
 			helped: null,
 			darkmode: null,
+			rich_links: null,
 			users: null,
 			_callback: () => {},
-			autosave: false,
+			_autosave: false,
 		}
 	) => {
 		bttgMySettings.helped = helped !== null ? helped : bttgMySettings.helped
 		bttgMySettings.darkmode =
 			darkmode !== null ? darkmode : bttgMySettings.darkmode
+		bttgMySettings.rich_links =
+			rich_links !== null ? rich_links : bttgMySettings.rich_links
 		bttgMySettings.users = users !== null ? users : bttgMySettings.users
 
-		if (autosave) {
+		if (_autosave) {
 			bttgSettingsSave({
 				_callback: _callback(),
 			})
@@ -244,7 +254,7 @@
 
 		bttgSettingsUpdate({
 			users: [...new Set(myBlocked)],
-			autosave: true,
+			_autosave: true,
 			_callback: () => {
 				bttgUsersFilter()
 			},
@@ -262,7 +272,7 @@
 
 		bttgSettingsUpdate({
 			users: [...new Set(myBlocked)],
-			autosave: true,
+			_autosave: true,
 			_callback: () => {
 				// Gives the browser time to do it's thing.
 				// Trust me, this is needed.
@@ -314,6 +324,134 @@
 			) {
 				comment.parent().remove()
 				return null
+			}
+
+			// Rich links.
+			if (bttgMySettings.rich_links) {
+				$(`.comment-content:not([data-bttg-rich-loaded])`).each(
+					function () {
+						const comment = $(this).attr(
+							"data-bttg-rich-loaded",
+							true
+						)
+
+						comment.find("a").each(function () {
+							const a = $(this)
+							const url = a.attr("href")
+							const ext = url.split(".").slice(-1)
+
+							const preview = $(`<a>`, {
+								href: url,
+								target: "_blank",
+								class: "media p-2 rounded bg-secondary text-light",
+							})
+
+							const title = $(`<h6>`, {
+								class: "mt-0 mb-1",
+								text: "Loading...",
+							})
+
+							const text = $(`<span>`, {
+								text: "Loading preview...",
+							})
+
+							const img = $(`<img>`, {
+								src: "https://placekitten.com/36/36",
+								css: {
+									height: "36px",
+									inset: "0px",
+									margin: "auto",
+									"max-width": "100px",
+									position: "abbsolute",
+								},
+							})
+
+							if (["gif", "jpg", "jpeg", "png"].includes(ext)) {
+								img.attr("src", url)
+								title.remove()
+								text.text(url)
+								preview.insertAfter(a)
+							} else {
+								preview
+									.append(
+										$(`<div>`, {
+											class: "mr-2",
+											css: {
+												height: "36px",
+												overflow: "hidden",
+												position: "relative",
+												width: "36px",
+											},
+										}).append(img)
+									)
+									.append(
+										$(`<div>`, { class: "media-body" })
+											.append(title)
+											.append(text)
+									)
+
+								fetch(
+									`https://favorited-link-preview.herokuapp.com/api/link-preview?url=${encodeURIComponent(
+										url
+									)}`,
+									{ mode: "no-cors" }
+								)
+									.then((response) => {
+										response
+											.json()
+											.then((data) => {
+												if (data?.result?.siteData) {
+													if (
+														data.result.siteData
+															?.image
+													) {
+														img.attr(
+															"src",
+															data.result.siteData
+																.image
+														)
+													}
+
+													if (
+														data.result.siteData
+															?.title
+													) {
+														title.text(
+															data.result.siteData
+																.title
+														)
+													}
+
+													if (
+														data.result.siteData
+															?.description
+													) {
+														text.text(
+															data.result.siteData
+																.description
+														)
+													}
+
+													preview.insertAfter(a)
+												} else {
+													preview.remove()
+												}
+											})
+											.catch((err) => {
+												console.log(
+													"No fetch allowed..."
+												)
+												preview.remove()
+											})
+									})
+									.catch((err) => {
+										console.log("No fetch allowed...")
+										preview.remove()
+									})
+							}
+						})
+					}
+				)
 			}
 
 			// If this comment has a block button already, don't do anything else.
@@ -496,25 +634,74 @@
 						}).appendTo(bttgSettingsMenu)
 
 						// Settings tab.
-						const bttgBlockedUsersContainer = $(`<div>`, {
-							text: "Você não possui usuários bloqueados.",
+						// Actual settings.
+						const bttgSettingsContainer = $(`<div>`, {
+							class: "mb-5",
 						})
-
-						// List blocked users.
-						const bttgBlockedUsers = bttgUsersBlockedGet()
-						if (bttgBlockedUsers.length) {
-							bttgBlockedUsersContainer.empty().append(
+							.append(
 								$(`<h6>`, {
-									text: "Usuários bloqueados",
+									text: "Preferências",
 									css: {
 										"font-weight": "600",
 										"font-size": "16px",
 									},
 								})
 							)
+							.append(
+								$(`<div>`, {
+									class: "custom-control custom-switch",
+								})
+									.append(
+										$(`<input>`, {
+											type: "checkbox",
+											class: "custom-control-input",
+											id: "bttg-checkbox-settings-rich-links",
+											checked: bttgMySettings.rich_links,
+										}).on("change", function () {
+											const checked =
+												$(this).is(":checked")
+
+											bttgSettingsUpdate({
+												rich_links: checked,
+												_autosave: true,
+											})
+										})
+									)
+									.append(
+										$(`<label>`, {
+											class: "custom-control-label",
+											for: "bttg-checkbox-settings-rich-links",
+											text: "Pré-visualizar links em comentários.",
+										}).append(
+											$(`<div>`, {
+												class: "form-text text-muted",
+												text: "(Depende de ferramenta de terceiros)",
+											})
+										)
+									)
+							)
+
+						// List blocked users.
+						const bttgBlockedUsersContainer = $(`<div>`).append(
+							$(`<h6>`, {
+								text: "Usuários bloqueados",
+								css: {
+									"font-weight": "600",
+									"font-size": "16px",
+								},
+							})
+						)
+
+						const bttgBlockedUsersList = $(`<div>`, {
+							text: "Você não possui usuários bloqueados.",
+						}).appendTo(bttgBlockedUsersContainer)
+
+						const bttgBlockedUsers = bttgUsersBlockedGet()
+						if (bttgBlockedUsers.length) {
+							bttgBlockedUsersList.empty()
 
 							$.each(bttgBlockedUsers, (i, user) => {
-								bttgBlockedUsersContainer.append(
+								bttgBlockedUsersList.append(
 									$(`<div>`, {
 										class: "form-group form-check",
 									})
@@ -538,7 +725,7 @@
 								)
 							})
 
-							bttgBlockedUsersContainer
+							bttgBlockedUsersList
 								.children()
 								.last()
 								.addClass("m-0")
@@ -547,7 +734,9 @@
 						const bttgTabSettingsGeneral = $(`<div>`, {
 							class: "d-none",
 							"data-bttg-tab-content": "settings-general",
-						}).append(bttgBlockedUsersContainer)
+						})
+							.append(bttgSettingsContainer)
+							.append(bttgBlockedUsersContainer)
 
 						// Backup button.
 						const bttgBtnSettingsBackup = $(`<a>`, {
@@ -597,9 +786,12 @@
 												darkmode:
 													myNewSettings.darkmode ??
 													false,
+												rich_links:
+													myNewSettings.rich_links ??
+													false,
 												users:
 													myNewSettings.users ?? [],
-												autosave: true,
+												_autosave: true,
 												_callback: () => {
 													// Gives the browser time to do it's thing.
 													// Trust me, this is needed.
@@ -691,7 +883,7 @@
 
 							bttgSettingsUpdate({
 								helped: true,
-								autosave: true,
+								_autosave: true,
 							})
 						} else {
 							bttgBtnSettingsGeneral.trigger("click")
@@ -740,7 +932,7 @@
 				$("html").toggleClass("bttg-dark-mode")
 				bttgSettingsUpdate({
 					darkmode: !bttgSettingsGet().darkmode,
-					autosave: true,
+					_autosave: true,
 				})
 			})
 			.append($(`<i>`, { class: "fa fa-star bttg-is-sun" }))
