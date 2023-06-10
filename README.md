@@ -55,4 +55,7 @@ Visualize usuários bloqueados e desfaça bloqueios.
 -   [ ] Adicionar destaque para termos importantes.
 -   [ ] Adicionar selo de verificação com base em "likes".
 -   [ ] Perguntar ao Mr G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
+-   [ ] Carregar imagens em comentários.
+-   [ ] Seletor de GIFs em comentários.
+-   [ ] Upload de imagens para IMGUR em comentários.
 -   [x] Jantar.
