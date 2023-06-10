@@ -113,8 +113,7 @@
 		}
 		.bttg-dark-mode .btn-criar-alerta{
 			background: var(--bttg-color-fg);
-			font-size: 0;
-			width: 30px;
+			color: var(--bttg-color-fc);
 		}
 		.bttg-dark-mode .search-bar{
 			background: var(--bttg-color-fg);
