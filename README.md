@@ -91,6 +91,7 @@ Faça backup das suas configurações e transfira entre computadores.
 -   Code cleaning (more like refactoring galore).
 -   Verified badges.
 -   Bugfixes.
+-   Badges will come from the latest branch.
 
 0.0.2
 

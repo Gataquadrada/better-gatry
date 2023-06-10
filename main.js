@@ -33,7 +33,7 @@
 
 	try {
 		fetch(
-			"https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/verified-users.json"
+			"https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/verified-users.json"
 		).then((response) => {
 			response.json().then((jsonData) => {
 				jsonData.users.forEach((u) => {
@@ -351,7 +351,7 @@
 			// Verified badge.
 			if (BTTG_VERIFIED[profileAt]) {
 				const badge = $(`<img>`, {
-					src: `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/assets/badge_${BTTG_VERIFIED[profileAt]}.png`,
+					src: `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/assets/badge_${BTTG_VERIFIED[profileAt]}.png`,
 					css: {
 						height: "15px",
 						width: "15px",
