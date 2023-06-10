@@ -816,9 +816,13 @@
 					const article = $(this)
 
 					if ($(this).find(".description h3").length) {
-						const title = $(this).find(".description h3").text()
+						const title = $(this)
+							.find(".description h3")
+							.text()
+							.trim()
+							.split("\n")
 
-						if (!$(`article:contains("${title}")`).length) {
+						if (!$(`article:contains("${title[0]}")`).length) {
 							$(appendLocal).append(article)
 						}
 					} else if ($(this).find(".comment-content").length) {

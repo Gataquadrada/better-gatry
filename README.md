@@ -92,6 +92,7 @@ Faça backup das suas configurações e transfira entre computadores.
 -   Verified badges.
 -   Bugfixes.
 -   Badges will come from the latest branch.
+-   Fixed a bug with duplicated posts check.
 
 0.0.2
 
