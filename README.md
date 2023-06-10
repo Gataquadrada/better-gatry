@@ -4,12 +4,22 @@
 
 <br>
 
-## Usuários de scripts personalizados podem utilizar o seguinte endereço:
+# Instalação
 
-`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
+Utilize um dos endereços abaixo em plugins de personalização. Como:
 
 -   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
 -   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
+
+<br>
+
+### Versão estável:
+
+`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
+
+### Quer a versão mais nova possível?
+
+`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/main.min.js`
 
 <br>
 
