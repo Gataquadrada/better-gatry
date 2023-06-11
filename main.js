@@ -409,7 +409,6 @@
 										response
 											.json()
 											.then((data) => {
-												console.log(data)
 												if (data?.url) {
 													if (data?.image) {
 														img.attr(
@@ -572,6 +571,10 @@
 			css: {
 				"align-items": "center",
 				background: "#ff338b",
+				"background-image":
+					"url('https://website-thumbnail-gataquadrada.vercel.app/public/badge_settings.png')",
+				"background-repeat": "no-repeat",
+				"background-position": "center center",
 				"border-radius": "100%",
 				color: "white",
 				display: "flex",
@@ -825,7 +828,7 @@
 						})
 							.append(
 								$(`<p>`, {
-									html: `- Clique em (<i class="fab fa-simplybuilt"></i>) para abrir este menu.`,
+									html: `- Clique em <img src="https://website-thumbnail-gataquadrada.vercel.app/public/badge_settings.png"> para abrir este menu.`,
 								})
 							)
 							.append(
@@ -898,7 +901,6 @@
 				})
 			})
 			.appendTo(bttgArea)
-			.append($(`<i>`, { class: "fab fa-simplybuilt" }))
 
 		// If user never saw the help screen, show it.
 		// Make them see it.

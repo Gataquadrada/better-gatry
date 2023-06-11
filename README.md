@@ -1,6 +1,6 @@
 # Ajustes na experiência Gatry.
 
-![Screenshot_5.png](/screenshot_5.png)
+![Screenshot_5.png](/assets/screenshot_5.png)
 
 <br>
 
@@ -23,7 +23,11 @@ Utilize a URL abaixo em plugins de personalização. Como:
 
 _Quando houver tempo livre (e vontade) para tal..._
 
--   O usuário [L Lawliet](https://gatry.com/usuarios/detalhe/TheTwoD) postou [uma base](chrome-plugin-base), caso você queira tomar a iniciativa.
+O usuário [L Lawliet](https://gatry.com/usuarios/detalhe/TheTwoD) postou [uma base](chrome-plugin-base), caso você queira tomar a iniciativa.
+
+```ini
+[Ele usou Manifest V2. Que não é mais aceito pelo Google. Então, boa sorte em converter esse Repo para Manifest V3. Visto que eu faço uso pesado das bibliotecas carregadas junto com o site.]
+```
 
 <br>
 <br>
@@ -32,7 +36,7 @@ _Quando houver tempo livre (e vontade) para tal..._
 
 Basta clicar no Sol/Lua no topo da tela, para alternar.
 
-![Screenshot_1.png](/screenshot_1.png)
+![Screenshot_1.png](/assets/screenshot_1.png)
 
 <br> 
 <br>
@@ -43,7 +47,7 @@ A lista de bloqueio é salva no seu navegador. Então, limpeza de cache (e outra
 
 Ainda não decidi se vou oferecer uma forma de salvar permanente.
 
-![Screenshot_2.png](/screenshot_2.png)
+![Screenshot_2.png](/assets/screenshot_2.png)
 
 <br> 
 <br>
@@ -52,7 +56,7 @@ Ainda não decidi se vou oferecer uma forma de salvar permanente.
 
 Visualize usuários bloqueados e desfaça bloqueios.
 
-![Screenshot_3.png](/screenshot_3.png)
+![Screenshot_3.png](/assets/screenshot_3.png)
 
 <br>
 <br>
@@ -61,7 +65,7 @@ Visualize usuários bloqueados e desfaça bloqueios.
 
 _Depende de um [serviço de terceiros](https://favorited-link-preview.herokuapp.com/)..._.
 
-![Screenshot_6.png](/screenshot_6.png)
+![Screenshot_6.png](/assets/screenshot_6.png)
 
 <br>
 <br>
@@ -70,7 +74,7 @@ _Depende de um [serviço de terceiros](https://favorited-link-preview.herokuapp.
 
 Faça backup das suas configurações e transfira entre computadores.
 
-![Screenshot_4.png](/screenshot_4.png)
+![Screenshot_4.png](/assets/screenshot_4.png)
 
 <br>
 <br>
