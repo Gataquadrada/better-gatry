@@ -6,24 +6,16 @@
 
 # Instalação
 
-Utilize um dos arquivos abaixo em plugins de personalização. Como:
+Utilize a URL abaixo em plugins de personalização. Como:
 
 -   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
 -   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
 
-### Versão estável
-
-`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@master/main.min.js`
-
-### Versão mais nova possível (depende de cache)
-
-`https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/main.min.js`
-
 <br>
 
-```ini
-[Eu pretendo criar um CDN, futuramente.]
-```
+## CDN
+
+`https://website-thumbnail-gataquadrada.vercel.app/public/main.min.js`
 
 <br>
 
@@ -85,6 +77,7 @@ Faça backup das suas configurações e transfira entre computadores.
 
 # A fazer
 
+-   ⬜ Filtrar usuários bloqueados antes de carregar comentários.
 -   ✅ Filtrar descontos duplicados, ao rolar a página.
 -   ✅ Filtrar posts duplicados, ao rolar a página.
 -   ✅ Salvar preferências de forma (mais) permanente.
@@ -99,7 +92,7 @@ Faça backup das suas configurações e transfira entre computadores.
 -   ⬜ Upload de imagens para IMGUR em comentários.
 -   ⬜ Gif avatars.
 -   🔄️ Achar a minha [LTT Screwdriver](https://www.lttstore.com/products/screwdriver).
--   ⬜ Criar um CDN/API via [Vercel](https://vercel.com/).
+-   ✅ Criar um CDN/API via [Vercel](https://website-thumbnail-gataquadrada.vercel.app/public/main.min.js).
 
 <br>
 

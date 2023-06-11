@@ -41,7 +41,7 @@
 
 	try {
 		fetch(
-			"https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/verified-users.json"
+			"https://website-thumbnail-gataquadrada.vercel.app/public/verified-users.json"
 		).then((response) => {
 			BTTG_CAN_FETCH = true
 			response.json().then((jsonData) => {
@@ -400,43 +400,31 @@
 									)
 
 								fetch(
-									`https://favorited-link-preview.herokuapp.com/api/link-preview?url=${encodeURIComponent(
+									`https://website-thumbnail-gataquadrada.vercel.app/api/?url=${encodeURIComponent(
 										url
-									)}`
+									)}`,
+									{ method: "POST" }
 								)
 									.then((response) => {
 										response
 											.json()
 											.then((data) => {
-												if (data?.result?.siteData) {
-													if (
-														data.result.siteData
-															?.image
-													) {
+												console.log(data)
+												if (data?.url) {
+													if (data?.image) {
 														img.attr(
 															"src",
-															data.result.siteData
-																.image
+															data.image
 														)
 													}
 
-													if (
-														data.result.siteData
-															?.title
-													) {
-														title.text(
-															data.result.siteData
-																.title
-														)
+													if (data?.title) {
+														title.text(data.title)
 													}
 
-													if (
-														data.result.siteData
-															?.description
-													) {
+													if (data?.description) {
 														text.text(
-															data.result.siteData
-																.description
+															data.description
 														)
 													}
 												} else {
