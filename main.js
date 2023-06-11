@@ -32,7 +32,12 @@
 	// *Verified users.
 	// Want to be one?
 	// Don't be an asshat.
-	const BTTG_VERIFIED = { gatry: "admin" }
+	const BTTG_VERIFIED = {
+		gatry: {
+			badge: "admin",
+			emoji: "🉐",
+		},
+	}
 
 	try {
 		fetch(
@@ -42,7 +47,10 @@
 			response.json().then((jsonData) => {
 				jsonData.users.forEach((u) => {
 					if ("gatry" !== u.user) {
-						BTTG_VERIFIED[u.user] = u.badge
+						BTTG_VERIFIED[u.user] = {
+							badge: u.badge,
+							emoji: u.emoji,
+						}
 					}
 				})
 			})
@@ -303,6 +311,8 @@
 	// This name should be more intuitive.
 	const bttgUsersFilter = () => {
 		const myBlocked = bttgUsersBlockedGet()
+		const d = new Date()
+		const m = d.getMonth()
 
 		$(`.comment-wrapper`).each(function () {
 			const comment = $(this)
@@ -327,7 +337,7 @@
 			}
 
 			// Rich links.
-			if (bttgMySettings.rich_links) {
+			if (BTTG_CAN_FETCH && bttgMySettings.rich_links) {
 				$(`.comment-content:not([data-bttg-rich-loaded])`).each(
 					function () {
 						const comment = $(this).attr(
@@ -344,7 +354,7 @@
 								href: url,
 								target: "_blank",
 								class: "media p-2 rounded bg-secondary text-light",
-							})
+							}).insertAfter(a)
 
 							const title = $(`<h6>`, {
 								class: "mt-0 mb-1",
@@ -370,7 +380,6 @@
 								img.attr("src", url)
 								title.remove()
 								text.text(url)
-								preview.insertAfter(a)
 							} else {
 								preview
 									.append(
@@ -430,21 +439,15 @@
 																.description
 														)
 													}
-
-													preview.insertAfter(a)
 												} else {
 													preview.remove()
 												}
 											})
 											.catch((err) => {
-												console.log(
-													"No fetch allowed..."
-												)
 												preview.remove()
 											})
 									})
 									.catch((err) => {
-										console.log("No fetch allowed...")
 										preview.remove()
 									})
 							}
@@ -474,7 +477,9 @@
 				// Really, dude?
 				if ("desireeoficial" == profileAt) {
 					alert("Eu crio o script e você tenta usar contra mim?")
-					alert("Imbecil.")
+					setTimeout(() => {
+						alert("Imbecil.")
+					}, 3000)
 					return null
 				}
 
@@ -486,13 +491,19 @@
 
 			// Verified badge.
 			if (BTTG_VERIFIED[profileAt]) {
-				const badge = $(`<img>`, {
-					src: `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/assets/badge_${BTTG_VERIFIED[profileAt]}.png`,
-					css: {
-						height: "15px",
-						width: "15px",
-					},
-				}).insertBefore(commentHeader.find(".text-gray").first())
+				if (3 == m && BTTG_VERIFIED[profileAt].emoji) {
+					const badge = $(`<span>`, {
+						text: BTTG_VERIFIED[profileAt].emoji,
+					}).insertBefore(commentHeader.find(".text-gray").first())
+				} else if (BTTG_VERIFIED[profileAt].badge) {
+					const badge = $(`<img>`, {
+						src: `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/assets/badge_${BTTG_VERIFIED[profileAt].badge}.png`,
+						css: {
+							height: "15px",
+							width: "15px",
+						},
+					}).insertBefore(commentHeader.find(".text-gray").first())
+				}
 			}
 		})
 	}

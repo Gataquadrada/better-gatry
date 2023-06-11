@@ -2,43 +2,58 @@
 	"users": [
 		{
 			"user": "desireeoficial",
-			"badge": "dev"
+			"badge": "dev",
+			"emoji": "😈"
 		},
 		{
 			"user": "aviadormesmo",
-			"badge": "aviador"
+			"badge": "aviador",
+			"emoji": "💦"
 		},
 		{
 			"user": "gavinthomas",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "😄"
 		},
 		{
 			"user": "marcosnolee",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "🔵"
 		},
 		{
 			"user": "guidodipaulatejano",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "👁️👄👁️"
 		},
 		{
 			"user": "GigaChad",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "🗿"
 		},
 		{
 			"user": "alguem",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "🐸"
 		},
 		{
 			"user": "esquerdista",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "🪆"
 		},
 		{
 			"user": "colorado",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "❤️"
 		},
 		{
 			"user": "xaparral",
-			"badge": "verified"
+			"badge": "verified",
+			"emoji": "🅸🆁🅾🅽 🅼🅰🅸🅳🅴🅽"
+		},
+		{
+			"user": "calopsita",
+			"badge": null,
+			"emoji": "🐦"
 		}
 	]
 }
