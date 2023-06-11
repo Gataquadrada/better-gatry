@@ -393,8 +393,7 @@
 								fetch(
 									`https://favorited-link-preview.herokuapp.com/api/link-preview?url=${encodeURIComponent(
 										url
-									)}`,
-									{ mode: "no-cors" }
+									)}`
 								)
 									.then((response) => {
 										response
