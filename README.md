@@ -65,6 +65,15 @@ Visualize usuários bloqueados e desfaça bloqueios.
 <br>
 <br>
 
+# Pré-visualizar links
+
+_Depende de um [serviço de terceiros](https://favorited-link-preview.herokuapp.com/)..._.
+
+![Screenshot_6.png](/screenshot_6.png)
+
+<br>
+<br>
+
 # Backup
 
 Faça backup das suas configurações e transfira entre computadores.
@@ -84,10 +93,13 @@ Faça backup das suas configurações e transfira entre computadores.
 -   ⬜ Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
 -   ✅ Carregar imagens em comentários.
 -   ✅ Pré-visualizar links em comentários.
+-   ⬜ Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em ofertas.
+-   ⬜ Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em posts livres.
 -   ⬜ Seletor de GIFs em comentários.
 -   ⬜ Upload de imagens para IMGUR em comentários.
 -   ⬜ Gif avatars.
--   ✅ Achar a minha LTT Screwdriver.
+-   🔄️ Achar a minha [LTT Screwdriver](https://www.lttstore.com/products/screwdriver).
+-   ⬜ Criar um CDN/API via [Vercel](https://vercel.com/).
 
 <br>
 
