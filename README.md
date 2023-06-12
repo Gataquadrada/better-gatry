@@ -1,5 +1,9 @@
 # Ajustes na experiência Gatry.
 
+-   [Instalação por script](#instalação);
+-   [Instalação local](#instalação-local);
+-   Chrome web Store (Soon™️);
+
 ![Screenshot_5.png](/assets/screenshot_5.png)
 
 <br>
@@ -21,15 +25,26 @@ Utilize a URL abaixo em plugins de personalização. Como:
 
 ## Plugin para Chrome/Opera/Firefox?
 
-_Quando houver tempo livre (e vontade) para tal..._
+_(Estamos trabalhando em uma versão para a Chrome store)_
 
-O usuário [williamarcondes](https://github.com/williamarcondes/) adicionou os arquivos para que consiga instalar a extensão local.
+## Instalação (local)
 
-Baixe o código em sua máquina acesse a url [chrome://extensions/](chrome://extensions/) clique em Load unpacked, e carregue a pasta do código. Agora bastará entrar no site e clicar na extensão.
+Por [williamarcondes](https://github.com/williamarcondes/).
+
+1. Baixe a pasta [bttg-manifest-v2](/bttg-manifest-v2) em sua máquina;
+2. Acesse a url `chrome://extensions/`;
+3. Clique em `Load unpacked`;
+4. Selecione a pasta `bttg-manifest-v2`, em seu computador;
+5. Pronto!
 
 ![Alt text](assets/how_install_chrome.png)
 
-# Dark mode
+<br>
+<br>
+
+# Funcionalidades
+
+## Dark mode
 
 Basta clicar no Sol/Lua no topo da tela, para alternar.
 
@@ -38,7 +53,7 @@ Basta clicar no Sol/Lua no topo da tela, para alternar.
 <br> 
 <br>
 
-# Botão de bloquear usuário
+## Botão de bloquear usuário
 
 A lista de bloqueio é salva no seu navegador. Então, limpeza de cache (e outras ações de anonimato) irão reiniciar as configurações.
 
@@ -49,7 +64,7 @@ Ainda não decidi se vou oferecer uma forma de salvar permanente.
 <br> 
 <br>
 
-# Lista de bloqueio
+## Lista de bloqueio
 
 Visualize usuários bloqueados e desfaça bloqueios.
 
@@ -58,16 +73,16 @@ Visualize usuários bloqueados e desfaça bloqueios.
 <br>
 <br>
 
-# Pré-visualizar links
+## Pré-visualizar links
 
-_Depende de um [serviço de terceiros](https://favorited-link-preview.herokuapp.com/)..._.
+_Depende de um serviço de terceiros..._.
 
 ![Screenshot_6.png](/assets/screenshot_6.png)
 
 <br>
 <br>
 
-# Backup
+## Backup
 
 Faça backup das suas configurações e transfira entre computadores.
 

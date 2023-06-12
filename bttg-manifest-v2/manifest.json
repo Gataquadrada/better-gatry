@@ -1,0 +1,27 @@
+{
+	"manifest_version": 2,
+	"name": "Better Gatry",
+	"short_name": "BttG",
+	"version": "0.0.1",
+	"description": "General improvements for gatry.com",
+	"homepage_url": "https://github.com/gataquadrada/better-gatry/",
+	"icons": {
+		"16": "images/icon-16.png",
+		"32": "images/icon-32.png",
+		"48": "images/icon-48.png",
+		"128": "images/icon-128.png"
+	},
+	"content_scripts": [
+		{
+			"js": ["scripts/main.js"],
+			"matches": [
+				"https://gatry.com/*",
+				"http://gatry.com/*",
+				"https://gatry.com.br/*",
+				"http://gatry.com.br/*"
+			],
+			"run_at": "document_start"
+		}
+	],
+	"permissions": ["activeTab", "scripting"]
+}
