@@ -1,4 +1,3 @@
-// manifest.js
 {
 	"name": "Better Gatry",
 	"version": "0.0.3",
@@ -12,7 +11,7 @@
 		"service_worker": "background.js"
 	},
 	"icons": {
-		"48": "logo.png",
-		"128": "logo.png"
+		"48": "assets/badge_dev.png",
+		"128": "assets/badge_dev.png"
 	}
 }
