@@ -23,14 +23,11 @@ Utilize a URL abaixo em plugins de personalização. Como:
 
 _Quando houver tempo livre (e vontade) para tal..._
 
-O usuário [L Lawliet](https://gatry.com/usuarios/detalhe/TheTwoD) postou [uma base](chrome-plugin-base), caso você queira tomar a iniciativa.
+O usuário [williamarcondes](https://github.com/williamarcondes/) adicionou os arquivos para que consiga instalar a extensão local.
 
-```ini
-[Ele usou Manifest V2. Que não é mais aceito pelo Google. Então, boa sorte em converter esse Repo para Manifest V3. Visto que eu faço uso pesado das bibliotecas carregadas junto com o site.]
-```
+Baixe o código em sua máquina acesse a url [chrome://extensions/](chrome://extensions/) clique em Load unpacked, e carregue a pasta do código. Agora bastará entrar no site e clicar na extensão.
 
-<br>
-<br>
+![Alt text](assets/how_install_chrome.png)
 
 # Dark mode
 
