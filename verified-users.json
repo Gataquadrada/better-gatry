@@ -3,7 +3,13 @@
 		{
 			"user": "desireeoficial",
 			"badge": "dev",
-			"emoji": "😈"
+			"emoji": "😈",
+			"avatar": "png"
+		},
+		{
+			"user": "thetwod",
+			"badge": "dev",
+			"emoji": "🎧"
 		},
 		{
 			"user": "aviadormesmo",
@@ -16,11 +22,6 @@
 			"emoji": "😄"
 		},
 		{
-			"user": "marcosnolee",
-			"badge": "verified",
-			"emoji": "🔵"
-		},
-		{
 			"user": "guidodipaulatejano",
 			"badge": "verified",
 			"emoji": "👁️👄👁️"
@@ -29,11 +30,6 @@
 			"user": "GigaChad",
 			"badge": "verified",
 			"emoji": "🗿"
-		},
-		{
-			"user": "alguem",
-			"badge": "verified",
-			"emoji": "🐸"
 		},
 		{
 			"user": "esquerdista",
@@ -51,13 +47,24 @@
 			"emoji": "🅸🆁🅾🅽 🅼🅰🅸🅳🅴🅽"
 		},
 		{
-			"user": "julimalo",
+			"user": "marcosnolee",
 			"badge": "verified",
+			"emoji": "🔵"
+		},
+		{
+			"user": "julimalo",
 			"emoji": "🦩"
 		},
 		{
+			"user": "alguem",
+			"emoji": "🐸"
+		},
+		{
+			"user": "alguemdageracaox",
+			"emoji": "🪝"
+		},
+		{
 			"user": "calopsita",
-			"badge": null,
 			"emoji": "🐦"
 		}
 	]

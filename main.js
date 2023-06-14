@@ -5,11 +5,14 @@
 // ==/UserScript==
 
 {
-	// Don't touch this.
-	var BTTG_CAN_FETCH = false
-
 	// Version, duh.
-	const BTTG_VERSION = "0.0.4"
+	const BTTG_VERSION = "0.0.5"
+
+	// Don't touch this.
+	const BTTG_DATA = {
+		who_am_i: null,
+		can_fetch: false,
+	}
 
 	// A bit of art for you nerds.
 	// Open with CTRL+SHIT+I (or CMD+Option+I).
@@ -43,13 +46,14 @@
 		fetch(
 			"https://website-thumbnail-gataquadrada.vercel.app/public/verified-users.json"
 		).then((response) => {
-			BTTG_CAN_FETCH = true
+			BTTG_DATA.can_fetch = true
 			response.json().then((jsonData) => {
 				jsonData.users.forEach((u) => {
 					if ("gatry" !== u.user) {
 						BTTG_VERIFIED[u.user] = {
-							badge: u.badge,
-							emoji: u.emoji,
+							badge: u.badge ?? null,
+							emoji: u.emoji ?? null,
+							avatar: u.avatar ?? null,
 						}
 					}
 				})
@@ -64,6 +68,7 @@
 		helped: false,
 		darkmode: true,
 		rich_links: false,
+		shadow_block: false,
 		users: [],
 	}
 
@@ -196,12 +201,13 @@
 		bttgMySettings.helped = mySettings.helped
 		bttgMySettings.darkmode = mySettings.darkmode
 		bttgMySettings.rich_links = mySettings.rich_links
+		bttgMySettings.shadow_block = mySettings.shadow_block
 		bttgMySettings.users = mySettings.users
 	} catch (err) {
 		console.error(err)
 	}
 
-	// *Utils (set as const so it's impossible to rewrite)
+	// *Utils (set as const so it's impossible to rewrite).
 	// Always use getters and setters, kids.
 	const bttgSettingsGet = () => {
 		return bttgMySettings
@@ -213,6 +219,7 @@
 			helped = null,
 			darkmode = null,
 			rich_links = null,
+			shadow_block = null,
 			users = null,
 			_callback = () => {},
 			_autosave = false,
@@ -220,6 +227,7 @@
 			helped: null,
 			darkmode: null,
 			rich_links: null,
+			shadow_block: null,
 			users: null,
 			_callback: () => {},
 			_autosave: false,
@@ -230,6 +238,8 @@
 			darkmode !== null ? darkmode : bttgMySettings.darkmode
 		bttgMySettings.rich_links =
 			rich_links !== null ? rich_links : bttgMySettings.rich_links
+		bttgMySettings.shadow_block =
+			shadow_block !== null ? shadow_block : bttgMySettings.shadow_block
 		bttgMySettings.users = users !== null ? users : bttgMySettings.users
 
 		if (_autosave) {
@@ -247,9 +257,10 @@
 		{ _callback = () => {} } = { _callback: () => {} }
 	) => {
 		localStorage.setItem("bttg_mysettings", JSON.stringify(bttgMySettings))
+		_callback()
 	}
 
-	// Return blocked users
+	// Return blocked users.
 	const bttgUsersBlockedGet = () => {
 		return bttgSettingsGet().users
 	}
@@ -293,13 +304,13 @@
 		})
 	}
 
-	// Darkmode on
+	// Darkmode on.
 	const bttgDarkmodeOn = () => {
 		// It's vanilla so Javascript will process it instantly.
 		document.getElementsByTagName("html")[0].classList.add("bttg-dark-mode")
 	}
 
-	// Darkmode off
+	// Darkmode off.
 	// !Unused
 	const bttgDarkmodeOff = () => {
 		// It's vanilla so Javascript will process it instantly [2].
@@ -314,73 +325,116 @@
 		const d = new Date()
 		const m = d.getMonth()
 
-		$(`.comment-wrapper`).each(function () {
-			const comment = $(this)
-			const commentHeader = comment.find(`.comment-header`).first()
-			const profileLink = commentHeader.find(`a`).attr(`href`).toString()
-			const profileAt = profileLink
-				.toString()
-				.toLowerCase()
-				.split("/")
-				.slice(-1)[0] // In case you're wondering, toString() is there to prevent types crash.
-
-			// It makes sense to me that, uppon inspecting their profile, you should actually see everything they said.
-			if (
-				myBlocked.includes(profileAt) &&
-				!window.location.href
+		$(`.comment-wrapper:not([data-bttg-done-processing])`).each(
+			function () {
+				const comment = $(this).attr("data-bttg-done-processing", true)
+				const commentHeader = comment.find(".comment-header").first()
+				const commentText = comment.find(".comment-content").first()
+				const profileLink = commentHeader
+					.find("a")
+					.attr("href")
+					.toString()
+				const profileAt = profileLink
 					.toString()
 					.toLowerCase()
-					.includes(`detalhe/${profileAt}`)
-			) {
-				comment.parent().remove()
-				return null
-			}
+					.split("/")
+					.slice(-1)[0] // In case you're wondering, toString() is there to prevent types crash.
 
-			// Rich links.
-			if (BTTG_CAN_FETCH && bttgMySettings.rich_links) {
-				$(`.comment-content:not([data-bttg-rich-loaded])`).each(
-					function () {
-						const comment = $(this).attr(
-							"data-bttg-rich-loaded",
-							true
-						)
+				// It makes sense to me that, uppon inspecting their profile, you should actually see everything they said.
+				if (
+					myBlocked.includes(profileAt) &&
+					!window.location.href
+						.toString()
+						.toLowerCase()
+						.includes(`detalhe/${profileAt}`)
+				) {
+					if (bttgMySettings.shadow_block) {
+						const content = commentText.html()
 
-						comment.find("a").each(function () {
-							const a = $(this)
-							const url = a.attr("href")
-							const ext = url.split(".").slice(-1)
-
-							const preview = $(`<a>`, {
-								href: url,
-								target: "_blank",
-								class: "media p-2 rounded bg-secondary text-light",
-							}).insertAfter(a)
-
-							const title = $(`<h6>`, {
-								class: "mt-0 mb-1",
-								text: "Loading...",
+						commentText
+							.text("Comentário bloqueado (clique para exibir).")
+							.css({
+								cursor: "pointer",
+								"font-style": "italic",
 							})
-
-							const text = $(`<span>`, {
-								text: "Loading preview...",
+							.one("click", function () {
+								commentText
+									.css({
+										cursor: "unset",
+										"font-style": "unset",
+									})
+									.html(content)
 							})
+					} else {
+						commentHeader
+							.find("a")
+							.first()
+							.text("Usuário")
+							.find("img.rounded-circle")
+							.first()
+							.attr("src", "/img/user_default.png")
 
-							const img = $(`<img>`, {
-								src: "https://placekitten.com/36/36",
-								css: {
-									height: "36px",
-									inset: "0px",
-									margin: "auto",
-									"max-width": "100px",
-									position: "abbsolute",
-								},
-							})
+						comment
+							.find(".comment-footer")
+							.first()
+							.find(".like, .answer")
+							.remove()
 
-							if (["gif", "jpg", "jpeg", "png"].includes(ext)) {
-								img.attr("src", url)
-								title.remove()
-								text.text(url)
-							} else {
+						commentText.text("Comentário bloqueado.")
+					}
+					return null
+				}
+
+				// Rich links.
+				if (BTTG_DATA.can_fetch && bttgMySettings.rich_links) {
+					$(`.comment-content:not([data-bttg-rich-loaded])`).each(
+						function () {
+							const comment = $(this).attr(
+								"data-bttg-rich-loaded",
+								true
+							)
+
+							comment.find("a").each(function () {
+								const a = $(this)
+								const url = a.attr("href")
+								const ext = url.split(".").slice(-1)
+
+								const preview = $(`<a>`, {
+									href: url,
+									target: "_blank",
+									class: "media p-2 rounded bg-secondary text-light",
+								})
+
+								const title = $(`<h6>`, {
+									class: "mt-0 mb-1",
+									text: "Loading...",
+									css: {
+										overflow: "hidden",
+										"text-overflow": "ellipsis",
+										"white-space": "nowrap",
+									},
+								})
+
+								const text = $(`<div>`, {
+									text: "Loading preview...",
+									css: {
+										overflow: "hidden",
+										"text-overflow": "ellipsis",
+										"white-space": "nowrap",
+									},
+								})
+
+								const img = $(`<img>`, {
+									src: "https://placekitten.com/36/36",
+									css: {
+										height: "36px",
+										inset: "0px",
+										margin: "auto",
+										"max-width": "100px",
+										position: "abbsolute",
+									},
+								})
+
 								preview
 									.append(
 										$(`<div>`, {
@@ -394,105 +448,121 @@
 										}).append(img)
 									)
 									.append(
-										$(`<div>`, { class: "media-body" })
+										$(`<div>`, { class: "media-body w-50" })
 											.append(title)
 											.append(text)
 									)
+									.insertAfter(a)
 
-								fetch(
-									`https://website-thumbnail-gataquadrada.vercel.app/api/?url=${encodeURIComponent(
-										url
-									)}`,
-									{ method: "POST" }
-								)
-									.then((response) => {
-										response
-											.json()
-											.then((data) => {
-												if (data?.url) {
-													if (data?.image) {
-														img.attr(
-															"src",
-															data.image
-														)
-													}
+								if (
+									["gif", "jpg", "jpeg", "png"].includes(ext)
+								) {
+									img.attr("src", url)
+									title.remove()
+									text.text(url)
+								} else {
+									fetch(
+										`https://website-thumbnail-gataquadrada.vercel.app/api/?url=${encodeURIComponent(
+											url
+										)}`,
+										{ method: "POST" }
+									)
+										.then((response) => {
+											response
+												.json()
+												.then((data) => {
+													if (data?.url) {
+														if (data?.image) {
+															img.attr(
+																"src",
+																data.image
+															)
+														}
 
-													if (data?.title) {
-														title.text(data.title)
-													}
+														if (data?.title) {
+															title.text(
+																data.title
+															)
+														}
 
-													if (data?.description) {
-														text.text(
-															data.description
-														)
+														if (data?.description) {
+															text.text(
+																data.description
+															)
+														}
+													} else {
+														preview.remove()
 													}
-												} else {
+												})
+												.catch((err) => {
 													preview.remove()
-												}
-											})
-											.catch((err) => {
-												preview.remove()
-											})
-									})
-									.catch((err) => {
-										preview.remove()
-									})
-							}
-						})
+												})
+										})
+										.catch((err) => {
+											preview.remove()
+										})
+								}
+							})
+						}
+					)
+				}
+
+				// If this comment has a block button already, don't do anything else.
+				// The bug the absence of this line was creating was hilarious, tho.
+				if (comment.find(`[data-bttg-user-block]`).length) return null
+
+				const blockUserButton = $(`<a>`, {
+					href: "#",
+					"data-bttg-user-block": profileAt,
+					css: {
+						color: "coral", // a bUtToN, CORAL!
+						float: "right", // Bet you don't get memes...
+						"margin-left": "7px", // ...or bitches
+						display: "none",
+					},
+					html: `<i class="fa fa-ban"></i>`,
+				}).on("click", function (e) {
+					e.stopImmediatePropagation()
+					e.preventDefault()
+
+					// Really, dude?
+					if ("desireeoficial" == profileAt) {
+						alert("Eu crio o script e você tenta usar contra mim?")
+						setTimeout(() => {
+							alert("Imbecil.")
+						}, 3000)
+						return null
 					}
-				)
-			}
 
-			// If this comment has a block button already, don't do anything else.
-			// The bug the absence of this line was creating was hilarious, tho.
-			if (comment.find(`[data-bttg-user-block]`).length) return null
+					bttgUserBlock(profileAt)
+				})
 
-			const blockUserButton = $(`<a>`, {
-				href: "#",
-				"data-bttg-user-block": profileAt,
-				css: {
-					color: "coral", // a bUtToN, CORAL!
-					float: "right", // Bet you don't get memes...
-					"margin-left": "7px", // ...or bitches
-					display: "none",
-				},
-				html: `<i class="fa fa-ban"></i>`,
-			}).on("click", function (e) {
-				e.stopImmediatePropagation()
-				e.preventDefault()
+				const commentReportArea = comment.find(`.comment-report`)
+				blockUserButton.insertBefore(commentReportArea)
 
-				// Really, dude?
-				if ("desireeoficial" == profileAt) {
-					alert("Eu crio o script e você tenta usar contra mim?")
-					setTimeout(() => {
-						alert("Imbecil.")
-					}, 3000)
-					return null
-				}
-
-				bttgUserBlock(profileAt)
-			})
-
-			const commentReportArea = comment.find(`.comment-report`)
-			blockUserButton.insertBefore(commentReportArea)
-
-			// Verified badge.
-			if (BTTG_VERIFIED[profileAt]) {
-				if (3 == m && BTTG_VERIFIED[profileAt].emoji) {
-					const badge = $(`<span>`, {
-						text: BTTG_VERIFIED[profileAt].emoji,
-					}).insertBefore(commentHeader.find(".text-gray").first())
-				} else if (BTTG_VERIFIED[profileAt].badge) {
-					const badge = $(`<img>`, {
-						src: `https://cdn.jsdelivr.net/gh/Gataquadrada/better-gatry@latest/assets/badge_${BTTG_VERIFIED[profileAt].badge}.png`,
-						css: {
-							height: "15px",
-							width: "15px",
-						},
-					}).insertBefore(commentHeader.find(".text-gray").first())
+				// Custom assets.
+				if (BTTG_VERIFIED[profileAt]) {
+					// Verified badge.
+					if (3 == m && BTTG_VERIFIED[profileAt].emoji) {
+						const badge = $(`<span>`, {
+							text: BTTG_VERIFIED[profileAt].emoji,
+						}).insertBefore(
+							commentHeader.find(".text-gray").first()
+						)
+					} else if (BTTG_VERIFIED[profileAt].badge) {
+						const badge = $(`<img>`, {
+							src: `https://website-thumbnail-gataquadrada.vercel.app/public/badge_${BTTG_VERIFIED[profileAt].badge}.png`,
+							css: {
+								height: "15px",
+								width: "15px",
+							},
+						}).insertBefore(
+							commentHeader.find(".text-gray").first()
+						)
+					}
 				}
 			}
-		})
+		)
 	}
 
 	// Downloading settings.
@@ -547,13 +617,37 @@
 		})
 	}
 
-	// *After we declared everything, we start using
-	if (bttgMySettings.darkmode) {
-		bttgDarkmodeOn()
+	// Current user's name.
+	const bttgWhoAmI = () => {
+		return (BTTG_DATA.who_am_i =
+			$(`.header .login [data-user-menu="perfil"]`)
+				.toArray()
+				.reduce(function (filtered, current) {
+					const a = $(current).find("a").first()
+
+					if (!a.length) return filtered
+
+					const href = a
+						.attr("href")
+						.toLowerCase()
+						.split("/")
+						.filter(function (v) {
+							return v.trim()
+						})
+
+					if (3 == href.length && "detalhe" == href[1]) {
+						filtered.push(href[2])
+					}
+
+					return filtered
+				}, [])[0] ?? null)
 	}
 
-	// Once the page is ready (and Mr.G's code ran), do our thing.
-	window.addEventListener("load", () => {
+	// Custom Interface.
+	const bttgInterfaceInit = () => {
+		// Fix for search button.
+		$(`form .search-bar [type="submit"]`).append(" Buscar")
+
 		// Buttons area at the top of the page.
 		const bttgArea = $(`<div>`, {
 			css: {
@@ -649,8 +743,9 @@
 								})
 							)
 							.append(
+								// Link preview.
 								$(`<div>`, {
-									class: "custom-control custom-switch",
+									class: "custom-control custom-switch mb-4",
 								})
 									.append(
 										$(`<input>`, {
@@ -680,6 +775,63 @@
 											})
 										)
 									)
+							)
+							.append(
+								// Shadow block.
+								$(`<div>`, {
+									class: "custom-control custom-switch",
+								})
+									.append(
+										$(`<input>`, {
+											type: "checkbox",
+											class: "custom-control-input",
+											id: "bttg-checkbox-settings-shadow-block",
+											checked:
+												bttgMySettings.shadow_block,
+										}).on("change", function () {
+											const checked =
+												$(this).is(":checked")
+
+											bttgSettingsUpdate({
+												shadow_block: checked,
+												_autosave: true,
+											})
+										})
+									)
+									.append(
+										$(`<label>`, {
+											class: "custom-control-label",
+											for: "bttg-checkbox-settings-shadow-block",
+											text: "Manter bloqueados, mas ocultar o conteúdo (clique para exibir).",
+										})
+									)
+							)
+
+						// Allow expand blocked comments.
+						$(`<div>`, {
+							class: "custom-control custom-switch",
+						})
+							.append(
+								$(`<input>`, {
+									type: "checkbox",
+									class: "custom-control-input",
+									id: "bttg-checkbox-settings-semi-block",
+									checked: bttgMySettings.shadow_block,
+								}).on("change", function () {
+									const checked = $(this).is(":checked")
+
+									bttgSettingsUpdate({
+										shadow_block: checked,
+										_autosave: true,
+									})
+								})
+							)
+							.append(
+								$(`<label>`, {
+									class: "custom-control-label",
+									for: "bttg-checkbox-settings-semi-block",
+									text: "Permitir clicar para ver comentários bloqueados.",
+								})
 							)
 
 						// List blocked users.
@@ -789,6 +941,9 @@
 													false,
 												rich_links:
 													myNewSettings.rich_links ??
+													false,
+												shadow_block:
+													myNewSettings.shadow_block ??
 													false,
 												users:
 													myNewSettings.users ?? [],
@@ -938,9 +1093,55 @@
 			.append($(`<i>`, { class: "fa fa-star bttg-is-sun" }))
 			.append($(`<i>`, { class: "fa fa-moon bttg-is-moon" }))
 			.appendTo(bttgArea)
+	}
 
-		// Filter users
+	// *After we declared everything, we start using.
+	if (bttgMySettings.darkmode) {
+		bttgDarkmodeOn()
+	}
+
+	// Once the page is ready (and Mr.G's code ran), do our thing.
+	window.addEventListener("load", () => {
+		// Gets user @ for future use.
+		bttgWhoAmI()
+
+		// Init interface.
+		bttgInterfaceInit()
+
+		// Filter users.
 		bttgUsersFilter()
+
+		// Profile picture preview.
+		if ($(`form[action="/usuarios/minha-conta"]`).length) {
+			const form = $(`form[action="/usuarios/minha-conta"]`)
+
+			const fieldWrapper = form.find(`.form-group.file`)
+
+			const previewWrapper = $(`<div>`, {
+				class: "d-flex align-items-center",
+			}).appendTo(fieldWrapper)
+
+			const avatarTop = $(`.header .login .link-icon.rounded-circle`)
+			const avatarPreview = avatarTop
+				.clone()
+				.addClass("mr-2")
+				.height("40px")
+				.width("40px")
+				.appendTo(previewWrapper)
+
+			const fileInput = fieldWrapper
+				.find(`[name="photo"]`)
+				.appendTo(previewWrapper)
+
+			fileInput.on("change", function () {
+				const input = $(this)
+				const reader = new FileReader()
+				reader.readAsDataURL(input[0].files[0])
+				reader.onload = () => {
+					avatarPreview.attr("src", reader.result)
+				}
+			})
+		}
 
 		// Replaces the default comments lightbox call to action.
 		$(document).off("click", "[data-lightbox-comments]")
