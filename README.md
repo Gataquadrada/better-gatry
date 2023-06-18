@@ -1,14 +1,25 @@
 # Ajustes na experiência Gatry.
 
--   [Instalação por script](#instalação);
--   [Instalação local](#instalação-local);
--   Chrome web Store (Soon™️);
+-   [Instalação](#instalação);
+    -   [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl);
+-   [Funcionalidades](#funcionalidades);
 
 ![Screenshot_5.png](/assets/screenshot_5.png)
 
 <br>
 
 # Instalação
+
+## Visite a [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl) e faça a instalação diretamente pelo seu navegador.
+
+<br>
+<br>
+
+## Via script personalizado
+
+**Com o plugin aprovado na [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl), não mais irei prover atualizações via CDN.**
+
+<br>
 
 Utilize a URL abaixo em plugins de personalização. Como:
 
@@ -17,15 +28,11 @@ Utilize a URL abaixo em plugins de personalização. Como:
 
 <br>
 
-## CDN
+### CDN
 
 `https://website-thumbnail-gataquadrada.vercel.app/public/main.min.js`
 
 <br>
-
-## Plugin para Chrome/Opera/Firefox?
-
-_(Estamos trabalhando em uma versão para a Chrome store)_
 
 ## Instalação (local)
 
@@ -137,9 +144,11 @@ Faça backup das suas configurações e transfira entre computadores.
 
 0.0.5
 
+-   Fixed (yet another) bug with comments lightbox.
 -   Fixed search button.
 -   Added option to just momentarily close comments from blocked users.
 -   Fixed notifications counter.
+-   [Chrome Web Store Plugin](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl).
 
 0.0.4
 
