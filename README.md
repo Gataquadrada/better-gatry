@@ -1,7 +1,8 @@
 # Ajustes na experiência Gatry.
 
 -   [Instalação](#instalação);
-    -   [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl);
+    -   [Chrome Web Store][chrome_url];
+    -   [Firefox Add-on][firefox_url];
 -   [Funcionalidades](#funcionalidades);
 
 ![Screenshot_5.png](/assets/screenshot_5.png)
@@ -10,14 +11,14 @@
 
 # Instalação
 
-## Visite a [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl) e faça a instalação diretamente pelo seu navegador.
+## Diponível na [Chrome Web Store][chrome_url] e como [Firefox Add-on][firefox_url].
 
 <br>
 <br>
 
-## Via script personalizado
+## Via script personalizado (desatualizado)
 
-**Com o plugin aprovado na [Chrome Web Store](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl), não mais irei prover atualizações via CDN.**
+**Com o plugin aprovado na [Chrome Web Store][chrome_url] e [Firefox Add-on][firefox_url], não mais irei prover atualizações via CDN.**
 
 <br>
 
@@ -148,7 +149,7 @@ Faça backup das suas configurações e transfira entre computadores.
 -   Fixed search button.
 -   Added option to just momentarily close comments from blocked users.
 -   Fixed notifications counter.
--   [Chrome Web Store Plugin](https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl).
+-   [Chrome Web Store Plugin][chrome_url].
 
 0.0.4
 
@@ -169,3 +170,6 @@ Faça backup das suas configurações e transfira entre computadores.
 0.0.1
 
 -   Introduction.
+
+[chrome_url]: https://chrome.google.com/webstore/detail/nhhngompdakhdgelejdkkbianmnmbecl
+[firefox_url]: https://addons.mozilla.org/en-US/firefox/addon/better-gatry/
