@@ -5,47 +5,12 @@
     -   [Firefox Add-on][firefox_url];
 -   [Funcionalidades](#funcionalidades);
 
-![Screenshot_5.png](/assets/screenshot_5.png)
-
+<br>
 <br>
 
 # Instalação
 
-## Diponível na [Chrome Web Store][chrome_url] e como [Firefox Add-on][firefox_url].
-
-<br>
-<br>
-
-## Via script personalizado (desatualizado)
-
-**Com o plugin aprovado na [Chrome Web Store][chrome_url] e [Firefox Add-on][firefox_url], não mais irei prover atualizações via CDN.**
-
-<br>
-
-Utilize a URL abaixo em plugins de personalização. Como:
-
--   [Violentmonkey](https://violentmonkey.github.io) (indicação de [GigaChad](https://gatry.com/usuarios/detalhe/GigaChad));
--   Eu uso o [Custom Style Script](https://chrome.google.com/webstore/detail/custom-style-script/ecjfaoeopefafjpdgnfcjnhinpbldjij) (Windows) e [Userscripts ](https://apps.apple.com/us/app/userscripts/id1463298887) (Mac).
-
-<br>
-
-### CDN
-
-`https://website-thumbnail-gataquadrada.vercel.app/public/main.min.js`
-
-<br>
-
-## Instalação (local)
-
-Por [williamarcondes](https://github.com/williamarcondes/).
-
-1. Baixe a pasta [bttg-manifest-v2](/bttg-manifest-v2) em sua máquina;
-2. Acesse a url `chrome://extensions/`;
-3. Clique em `Load unpacked`;
-4. Selecione a pasta `bttg-manifest-v2`, em seu computador;
-5. Pronto!
-
-![Alt text](assets/how_install_chrome.png)
+Diponível na [Chrome Web Store][chrome_url] e como [Firefox Add-on][firefox_url].
 
 <br>
 <br>
@@ -109,6 +74,15 @@ Chega de aguardar o cache do site, para saber se a sua foto estará enquadrada!
 <br>
 <br>
 
+## Download de posts
+
+Salve informações importantes na área livre.
+
+![Screenshot_4.png](/assets/screenshot_9.png)
+
+<br>
+<br>
+
 ## Backup
 
 Faça backup das suas configurações e transfira entre computadores.
@@ -120,7 +94,7 @@ Faça backup das suas configurações e transfira entre computadores.
 
 # A fazer
 
--   ⬜ Download de posts e conversas.
+-   ✅ Download de posts e conversas.
 -   🟥 Modo `**texto rico**` => **texto rico**.
 -   ✅ Filtrar usuários bloqueados antes de carregar comentários.
 -   ✅ Filtrar descontos duplicados, ao rolar a página.
@@ -131,13 +105,13 @@ Faça backup das suas configurações e transfira entre computadores.
 -   🟥 Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
 -   ✅ Carregar imagens em comentários.
 -   ✅ Pré-visualizar links em comentários.
--   ⬜ Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em ofertas.
+-   🟥 Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em ofertas.
 -   🟥 Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em posts livres.
 -   🟥 Seletor de GIFs em comentários.
 -   🟥 Upload de imagens para IMGUR em comentários.
 -   ⬜ Upload de screenshot para IMGUR em comentários.
 -   🔄️ Achar a minha [LTT Screwdriver](https://www.lttstore.com/products/screwdriver).
--   ✅ Criar um CDN/API via [Vercel](https://website-thumbnail-gataquadrada.vercel.app/public/main.min.js).
+-   ✅ Criar um CDN/API via Vercel.
 
 <br>
 
