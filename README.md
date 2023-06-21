@@ -95,20 +95,20 @@ Faça backup das suas configurações e transfira entre computadores.
 # A fazer
 
 -   ✅ Download de posts e conversas.
--   🟥 Modo `**texto rico**` => **texto rico**.
+-   ⬜ Modo `**texto rico**` => **texto rico**.
 -   ✅ Filtrar usuários bloqueados antes de carregar comentários.
 -   ✅ Filtrar descontos duplicados, ao rolar a página.
 -   ✅ Filtrar posts duplicados, ao rolar a página.
 -   ✅ Salvar preferências de forma (mais) permanente.
 -   ⬜ Adicionar destaque para termos importantes.
 -   ✅ Adicionar selo de verificação.
--   🟥 Perguntar ao Mr.G se posso adicionar "Deslikes" e lista de usuários que deram "Like".
+-   ⬜ Adicionar "Deslikes" e lista de usuários que deram "Like".
 -   ✅ Carregar imagens em comentários.
 -   ✅ Pré-visualizar links em comentários.
--   🟥 Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em ofertas.
--   🟥 Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em posts livres.
--   🟥 Seletor de GIFs em comentários.
--   🟥 Upload de imagens para IMGUR em comentários.
+-   ✅ Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em ofertas.
+-   ✅ Botão de compartilhar no WhatsApp/Email/Twitter/Facebook em posts livres.
+-   ⬜ Seletor de GIFs em comentários.
+-   ⬜ Upload de imagens para IMGUR em comentários.
 -   ⬜ Upload de screenshot para IMGUR em comentários.
 -   🔄️ Achar a minha [LTT Screwdriver](https://www.lttstore.com/products/screwdriver).
 -   ✅ Criar um CDN/API via Vercel.
